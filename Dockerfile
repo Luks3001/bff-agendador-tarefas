@@ -5,6 +5,6 @@ COPY . .
 RUN mvn clean install -DskipTest
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/*.jar /app/bff-agendador-tarefas.jar
 EXPOSE 8083
 CMD ["java", "-jar", "/app/bff-agendador-tarefas.jar"]
