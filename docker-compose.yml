@@ -21,6 +21,15 @@ services:
       - USUARIO_URL=http://usuario:8080/usuario
       - AGENDADOR_TAREFAS_URL=http://agendador-tarefas:8081/tarefas
       - NOTIFICACAO_URL=http://notificacao:8084/email
+      -  SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/db_usuario
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+
+    depends_on:
+      - postgres
+      - usuario
+      - agendador-tarefas
+      - notificacao
   usuario:
     build: ..\usuario
     container_name: usuario
