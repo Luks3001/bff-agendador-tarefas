@@ -1,6 +1,7 @@
 package com.lucas.bffagendadortarefas.controller;
 
 
+import com.lucas.bffagendadortarefas.infrastructure.exceptions.CepInvalidoException;
 import com.lucas.bffagendadortarefas.infrastructure.exceptions.ConflictException;
 import com.lucas.bffagendadortarefas.infrastructure.exceptions.ResourceNotFoundException;
 import com.lucas.bffagendadortarefas.infrastructure.exceptions.UnauthorizedException;
@@ -26,6 +27,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlerUnauthorizedException (UnauthorizedException ex){
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(CepInvalidoException.class)
+    public ResponseEntity<String>handlerCepInvalidoException (CepInvalidoException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 
 
 }
