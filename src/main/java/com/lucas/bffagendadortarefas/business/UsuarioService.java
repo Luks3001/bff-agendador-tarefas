@@ -32,7 +32,7 @@ public class UsuarioService {
 
 
     public UsuarioDTOResponse buscarUsuarioPorEmail(String email, String token) {
-         return client.buscaUsuarioPorEmail(email, token);
+        return client.buscaUsuarioPorEmail(email, token);
 
     }
 
@@ -70,9 +70,16 @@ public class UsuarioService {
 
     }
 
-public ViaCepDTOResponse buscarEnderecoPorCep(String cep) {
+    public ViaCepDTOResponse buscarEnderecoPorCep(String cep) {
         return client.buscarDadosCep(cep);
-}
+    }
 
-}
 
+    public void deletaEndereco(Long idEndereco, String token) {
+        client.deletaEndereco(idEndereco, token);
+    }
+
+    public void deletaTelefone(Long idTelefone, String token) {
+        client.deletaTelefone(idTelefone, token);
+    }
+}

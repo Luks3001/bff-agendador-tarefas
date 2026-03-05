@@ -146,4 +146,26 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.buscarEnderecoPorCep(cep));
     }
 
+    @DeleteMapping("/endereco")
+    @Operation(summary = "Deleta Endereço de Usuários",
+            description = "Deleta o endereço de um usuário passando o ID")
+    @ApiResponse(responseCode = "204", description = "Endereço deletado com sucesso")
+    @ApiResponse(responseCode = "403", description = "Usuário não encontrado / Sem permissão")
+    public ResponseEntity<Void> deletaEndereco(@RequestParam("id") Long id,
+                                               @RequestHeader("Authorization") String token) {
+        usuarioService.deletaEndereco(id, token);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/telefone")
+    @Operation(summary = "Deleta Telefone de Usuários",
+            description = "Deleta o telefone de um usuário passando o ID")
+    @ApiResponse(responseCode = "204", description = "Telefone deletado com sucesso")
+    @ApiResponse(responseCode = "403", description = "Usuário não encontrado / Sem permissão")
+    public ResponseEntity<Void> deletaTelefone(@RequestParam("id") Long id,
+                                               @RequestHeader("Authorization") String token) {
+        usuarioService.deletaTelefone(id, token);
+        return ResponseEntity.noContent().build();
+    }
+
 }
